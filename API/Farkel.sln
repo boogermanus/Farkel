@@ -6,9 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dice", "Dice", "{D5A7FB10-B71A-4393-94D0-987AA83AAA74}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dice", "Dice\Dice\Dice.csproj", "{80C23C87-E168-46E5-B445-C92FEC757441}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dice.Testing", "Dice\Dice.Testing\Dice.Testing.csproj", "{12CF4C4D-9476-4FDE-9474-FA46BB9A2783}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
