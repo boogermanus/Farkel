@@ -1,5 +1,5 @@
 
-namespace Dice.Models;
+namespace Dice.Library.Models;
 
 public class NumberedDie : BaseDie<int>
 {

@@ -1,7 +1,6 @@
-using Dice.Interfaces;
-using Microsoft.VisualBasic;
+using Dice.Library.Interfaces;
 
-namespace Dice.Models;
+namespace Dice.Library.Models;
 
 public abstract class BaseDie<T> : IDie<T> where T : notnull
 {

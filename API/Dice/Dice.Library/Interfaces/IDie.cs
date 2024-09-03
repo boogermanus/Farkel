@@ -1,4 +1,4 @@
-namespace Dice.Interfaces;
+namespace Dice.Library.Interfaces;
 
 public interface IDie<T> where T : notnull
 {
