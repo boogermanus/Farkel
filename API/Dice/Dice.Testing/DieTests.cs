@@ -33,4 +33,28 @@ public class DieTests
             Assert.That(() => _numberedDie.CurrentRoll, Is.LessThanOrEqualTo(6));
         }
     }
+
+    [Test]
+    public void ThrowsIfZeroOrLess()
+    {
+        Assert.That(() => new NumberedDie(new List<int>()), Throws.ArgumentException);
+    }
+
+    [Test]
+    public void ThrowsIfZeroOrLessWithMessage()
+    {
+        Assert.That(() => new NumberedDie(new List<int>()), Throws.ArgumentException.With.Message.Contain("zero"));
+    }
+
+    [Test]
+    public void ThrowsIfSidesGreaterThanTwenty()
+    {
+        Assert.That(() => new NumberedDie(new List<int>(Enumerable.Range(1,21))), Throws.ArgumentException);
+    }
+
+    [Test]
+    public void ThrowsIfSidesGraterThanTwnetyWithMessage()
+    {
+        Assert.That(() => new NumberedDie(new List<int>(Enumerable.Range(1,21))), Throws.ArgumentException.With.Message.Contain("twenty"));
+    }
 }

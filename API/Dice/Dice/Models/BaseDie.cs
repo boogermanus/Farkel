@@ -17,6 +17,12 @@ public class BaseDie<T> : IDie<T> where T : notnull
     {
         _sides = sides;
         _sidesCount = _sides.Count();
+
+        if (_sidesCount <= 0)
+            throw new ArgumentException("Sides cannot be less than zero");
+
+        if(_sidesCount > 20)
+            throw new ArgumentException("sides cannot be greater than twenty");
     }
 
     public virtual void Roll()
