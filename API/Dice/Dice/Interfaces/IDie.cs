@@ -4,4 +4,6 @@ public interface IDie<T> where T : notnull
 {
     IEnumerable<T> Sides { get; }
     T CurrentRoll { get; }
+
+    void Roll();
 }
