@@ -49,12 +49,13 @@ public class DieTests
     [Test]
     public void ThrowsIfSidesGreaterThanTwenty()
     {
-        Assert.That(() => new NumberedDie(new List<int>(Enumerable.Range(1,21))), Throws.ArgumentException);
+        Assert.That(() => new NumberedDie(new List<int>(Enumerable.Range(1, 21))), Throws.ArgumentException);
     }
 
     [Test]
     public void ThrowsIfSidesGraterThanTwnetyWithMessage()
     {
-        Assert.That(() => new NumberedDie(new List<int>(Enumerable.Range(1,21))), Throws.ArgumentException.With.Message.Contain("twenty"));
+        Assert.That(() => new NumberedDie(new List<int>(Enumerable.Range(1, 21))), 
+            Throws.ArgumentException.With.Message.Contain("twenty"));
     }
 }
