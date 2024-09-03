@@ -6,30 +6,30 @@ namespace Dice.Testing;
 public class DieTests
 {
     private NumberedDie _numberedDie;
+    private readonly IEnumerable<int> _count = Enumerable.Range(0, 100);
+    
     [SetUp]
     public void Setup()
     {
-        _numberedDie = new NumberedDie([1,2,3,4,5,6]);
+        _numberedDie = new NumberedDie([1, 2, 3, 4, 5, 6]);
     }
 
     [Test]
     public void RollIsGreaterThanZero()
     {
-        var count = Enumerable.Range(0,100);
-        foreach(var roll in count)
+        foreach (var roll in _count)
         {
-            Assert.That(() => _numberedDie.Roll(), Is.GreaterThan(0));
+            _numberedDie.Roll();
+            Assert.That(() => _numberedDie.CurrentRoll, Is.GreaterThan(0));
         }
     }
 
     [Test]
     public void RollIsLessThanOrEqualToSix()
     {
-        var count = Enumerable.Range(0,100);
-
-        foreach(var roll in count)
+        foreach (var roll in _count)
         {
-            Assert.That(() => _numberedDie.Roll(), Is.LessThanOrEqualTo(6));
+            Assert.That(() => _numberedDie.CurrentRoll, Is.LessThanOrEqualTo(6));
         }
     }
 }

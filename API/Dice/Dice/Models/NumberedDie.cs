@@ -8,10 +8,10 @@ public class NumberedDie : BaseDie<int>
 
     }
 
-    public override int Roll()
+    public override void Roll()
     {
         var random = new Random();
         var roll = random.Next(1, SidesCount - 1);
-        return roll;
+        _currentRoll = roll;
     }
 }

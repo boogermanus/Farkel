@@ -10,13 +10,16 @@ public class BaseDie<T> : IDie<T> where T : notnull
     private int _sidesCount;
     protected int SidesCount => _sidesCount;
 
+    protected T _currentRoll;
+    public T CurrentRoll => _currentRoll;
+
     protected BaseDie(IEnumerable<T> sides)
     {
         _sides = sides;
         _sidesCount = _sides.Count();
     }
 
-    public virtual T Roll()
+    public virtual void Roll()
     {
         throw new NotImplementedException();
     }
