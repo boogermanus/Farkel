@@ -3,7 +3,7 @@ namespace Dice.Models;
 
 public class NumberedDie : BaseDie<int>
 {
-    protected NumberedDie(IEnumerable<int> sides) : base(sides)
+    public NumberedDie(IEnumerable<int> sides) : base(sides)
     {
 
     }
