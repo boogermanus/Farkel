@@ -7,7 +7,7 @@ public class DieTests
 {
     private NumberedDie _numberedDie;
     private readonly IEnumerable<int> _count = Enumerable.Range(0, 100);
-    
+
     [SetUp]
     public void Setup()
     {
@@ -29,6 +29,7 @@ public class DieTests
     {
         foreach (var roll in _count)
         {
+            _numberedDie.Roll();
             Assert.That(() => _numberedDie.CurrentRoll, Is.LessThanOrEqualTo(6));
         }
     }
