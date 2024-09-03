@@ -24,7 +24,7 @@ public class DiceTests
         var dice = new Dice<int>(new List<IDie<int>>());
         Assert.That(() => new Dice<int>(new List<IDie<int>>()), Throws.ArgumentException);
     }
-e
+
     [Test]
     public void ThrowsIfDiceCountIsEualToZeroWithMessage()
     {
