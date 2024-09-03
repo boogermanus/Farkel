@@ -15,6 +15,10 @@ public class BaseDice<T> : IDice<T> where T : notnull
     {
         _dice = dice;
         _diceCount = dice.Count();
+
+        // if dice count less than 1;
+        if(_diceCount < 1)
+            throw new ArgumentException($"{nameof(dice)} cannot be less than one");
     }
 
     public void Roll()
