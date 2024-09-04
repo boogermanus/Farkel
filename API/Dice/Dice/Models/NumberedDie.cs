@@ -8,6 +8,11 @@ public class NumberedDie : BaseDie<int>
 
     }
 
+    public NumberedDie(int sides) : base(Enumerable.Range(1, sides))
+    {
+
+    }
+
     public override void Roll()
     {
         var random = new Random();

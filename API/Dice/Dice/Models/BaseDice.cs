@@ -17,15 +17,18 @@ public class BaseDice<T> : IDice<T> where T : notnull
         _diceCount = dice.Count();
 
         // if dice count less than 1;
-        if(_diceCount < 1)
+        if(_diceCount == 0)
             throw new ArgumentException($"{nameof(dice)} cannot be less than one");
+
+        int id = 1;
+        foreach(var die in Dice)
+        {
+            die.SetId(id++);
+        }
     }
 
     public void Roll()
     {
-        foreach(var die in Dice)
-        {
-            die.Roll();
-        }
+        Dice.ToList().ForEach(die => die.Roll());
     }
 }

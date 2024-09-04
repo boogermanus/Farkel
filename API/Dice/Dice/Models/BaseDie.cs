@@ -13,6 +13,9 @@ public class BaseDie<T> : IDie<T> where T : notnull
     protected T _currentRoll;
     public T CurrentRoll => _currentRoll;
 
+    protected int _id;
+    public int Id => _id;
+
     protected BaseDie(IEnumerable<T> sides)
     {
         _sides = sides;
@@ -28,5 +31,10 @@ public class BaseDie<T> : IDie<T> where T : notnull
     public virtual void Roll()
     {
         throw new NotImplementedException();
+    }
+
+    public void SetId(int id)
+    {
+        _id = id;
     }
 }

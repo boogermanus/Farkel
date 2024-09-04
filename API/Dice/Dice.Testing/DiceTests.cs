@@ -21,14 +21,23 @@ public class DiceTests
     [Test]
     public void ThrowsIfDiceCountEqualToZero()
     {
-        var dice = new Dice<int>(new List<IDie<int>>());
         Assert.That(() => new Dice<int>(new List<IDie<int>>()), Throws.ArgumentException);
     }
 
     [Test]
-    public void ThrowsIfDiceCountIsEualToZeroWithMessage()
+    public void ThrowsIfDiceCountIsEqualToZeroWithMessage()
     {
         Assert.That(() => new Dice<int>(new List<IDie<int>>()),
-            Throws.ArgumentNullException.With.Message.Contain("one"));
+            Throws.ArgumentException.With.Message.Contain("one"));
+    }
+
+    [Test]
+    public void ShouldSetIdOfDice()
+    {
+        var die = new NumberedDie(1);
+        var dice = new Dice<int>([die]);
+
+        Assert.That(dice.Dice.First().Id, Is.GreaterThan(0));
+
     }
 }

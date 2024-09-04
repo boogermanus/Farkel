@@ -9,4 +9,5 @@ public class Dice<T> : BaseDice<T> where T : notnull
     {
         
     }
+    
 }
