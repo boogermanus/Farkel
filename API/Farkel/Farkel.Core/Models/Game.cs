@@ -1,3 +1,4 @@
+using Farkel.Core.Enums;
 using Farkel.Core.Interfaces;
 
 namespace Farkel.Core.Models;
@@ -13,13 +14,16 @@ public class Game : IGame
     private List<IPlayer> _players = new List<IPlayer>();
     public IEnumerable<IPlayer> Players => _players;
 
+    public GameState GameState { get; set; }
+
     public Game(string id)
     {
         _id = id;
+        GameState = GameState.WaitingForPlayers;
     }
 
     public void AddPlayer(IPlayer player)
     {
-        throw new NotImplementedException();
+        _players.Add(player);
     }
 }
