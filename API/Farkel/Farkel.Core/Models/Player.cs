@@ -15,7 +15,14 @@ public class Player : IPlayer
 
     public Player(string id, string name)
     {
+        if(string.IsNullOrEmpty(id))
+            throw new ArgumentNullException(nameof(id));
+
         _id = id;
+
+        if(string.IsNullOrEmpty(name))
+            throw new ArgumentNullException(nameof(name));
+            
         _name = name;
     }
 
