@@ -9,4 +9,6 @@ public interface IGame
     IEnumerable<IPlayer> Players { get; }
     GameState GameState { get; set; }
     void AddPlayer(IPlayer player);
+    void StartGame();
+    event EventHandler GameStarted;
 }
