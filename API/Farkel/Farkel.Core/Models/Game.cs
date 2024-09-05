@@ -13,7 +13,7 @@ public class Game : IGame
 
     private List<IPlayer> _players = new List<IPlayer>();
 
-    public event EventHandler GameStarted;
+    public event EventHandler? GameStarted;
 
     public IEnumerable<IPlayer> Players => _players;
 
