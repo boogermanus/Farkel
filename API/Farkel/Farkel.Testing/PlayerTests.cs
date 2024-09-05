@@ -28,4 +28,19 @@ public class PlayerTests
     {
         Assert.That(() => new Player("Empty", string.Empty), Throws.ArgumentNullException);
     }
+
+    [Test]
+    public void ScoreShouldThrowForNegativePoints()
+    {
+        var player = new Player("test", "test");
+        Assert.That(() => player.ScorePoints(-1), Throws.InvalidOperationException);
+    }
+
+    [Test]
+    public void ScoreShouldUpdatePoints()
+    {
+        var player = new Player("test", "test");
+        player.ScorePoints(100);
+        Assert.That(player.Points, Is.EqualTo(100));
+    }
 }

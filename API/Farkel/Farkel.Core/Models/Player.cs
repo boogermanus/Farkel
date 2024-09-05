@@ -22,12 +22,15 @@ public class Player : IPlayer
 
         if(string.IsNullOrEmpty(name))
             throw new ArgumentNullException(nameof(name));
-            
+
         _name = name;
     }
 
     public void ScorePoints(int points)
     {
+        if(points < 0)
+            throw new InvalidOperationException("Points cannot be less than zero");
+        
         _points += points;
     }
 }
