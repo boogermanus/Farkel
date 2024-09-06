@@ -13,7 +13,7 @@ public class GameTests
     {
         _game = new Game("test");
     }
-    
+
     [Test]
     public void GameShouldSetId()
     {
@@ -31,7 +31,7 @@ public class GameTests
     [Test]
     public void AddPlayerShouldAddPlayer()
     {
-        _game.AddPlayer(new Player("1","Bob"));
+        _game.AddPlayer(new Player("1", "Bob"));
 
         Assert.That(_game.Players.Count(), Is.EqualTo(1));
     }
@@ -39,8 +39,8 @@ public class GameTests
     [Test]
     public void AddPlayersShouldSetGameStateToReadyToPlay()
     {
-        _game.AddPlayer(new Player("1","Bob"));
-        _game.AddPlayer(new Player("2","Jane"));
+        _game.AddPlayer(new Player("1", "Bob"));
+        _game.AddPlayer(new Player("2", "Jane"));
 
         Assert.That(_game.GameState, Is.EqualTo(GameState.ReadyToPlay));
     }
@@ -54,10 +54,28 @@ public class GameTests
     [Test]
     public void StartGameShouldSetGameStateToPlaying()
     {
-        _game.AddPlayer(new Player("1","Bob"));
-        _game.AddPlayer(new Player("2","Jane"));
+        _game.AddPlayer(new Player("1", "Bob"));
+        _game.AddPlayer(new Player("2", "Jane"));
         _game.StartGame();
         Assert.That(() => _game.GameState, Is.EqualTo(GameState.Playing));
+    }
+
+    [Test]
+    public void StartGameShouldSetCurrentPlayer()
+    {
+        _game.AddPlayer(new Player("1", "Bob"));
+        _game.AddPlayer(new Player("2", "Jane"));
+        _game.StartGame();
+        Assert.That(_game.CurrentPlayer, Is.Not.Null);
+    }
+
+    [Test]
+    public void StartGameShouldSetNextPlayer()
+    {
+        _game.AddPlayer(new Player("1", "Bob"));
+        _game.AddPlayer(new Player("2", "Jane"));
+        _game.StartGame();
+        Assert.That(_game.NextPlayer, Is.Not.Null);
     }
 
     [Test]
@@ -65,12 +83,14 @@ public class GameTests
     {
         var wasCalled = false;
 
-        _game.GameStarted += (o,e) => wasCalled = true;
-        
-        _game.AddPlayer(new Player("1","Bob"));
-        _game.AddPlayer(new Player("2","Jane"));
+        _game.GameStarted += (o, e) => wasCalled = true;
+
+        _game.AddPlayer(new Player("1", "Bob"));
+        _game.AddPlayer(new Player("2", "Jane"));
         _game.StartGame();
 
         Assert.That(wasCalled, Is.True);
     }
+
+
 }

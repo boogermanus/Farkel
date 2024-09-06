@@ -18,6 +18,14 @@ public class Game : IGame
     public IEnumerable<IPlayer> Players => _players;
 
     public GameState GameState { get; set; }
+    public event EventHandler? PlayerTurn;
+
+    private IPlayer? _currentPlayer;
+    public IPlayer? CurrentPlayer => _currentPlayer;
+
+    private int _playerIndex = 0;
+    private IPlayer? _nextPlayer;
+    public IPlayer? NextPlayer => _nextPlayer;
 
     public Game(string id)
     {
@@ -42,5 +50,15 @@ public class Game : IGame
         GameState = GameState.Playing;
 
         GameStarted?.Invoke(this, EventArgs.Empty);
+        SetPlayers();
+    }
+
+    private void SetPlayers()
+    {
+        _currentPlayer = _players[_playerIndex];
+        _nextPlayer = _players[_playerIndex + 1];
+        _playerIndex++;
+        if(_playerIndex == _numberOfPlayers)
+            _playerIndex = 0;
     }
 }
